@@ -1,4 +1,39 @@
 import React, { Component } from "react";
+// import { Global, css } from '@emotion/core'
+import styled from "@emotion/styled";
+
+const ContentWrapper = styled.section`
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+`;
+
+const FormHeader = styled.h1`
+	color: darkblue;
+	text-decoration: underline;
+`;
+
+const FormWrapper = styled.form`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	min-width: 40vw;
+	min-height: 30vh;
+	border: 2px solid darkblue;
+  border-radius: 3px;
+`;
+
+
+const Submit = styled.input`
+	font-size: 1em;
+	color: darkblue;
+	padding: 0.25em 1em;
+	border: 2px solid darkblue;
+	border-radius: 3px;
+  }
+  `;
 
 export class Form extends Component {
 	constructor(props) {
@@ -7,12 +42,6 @@ export class Form extends Component {
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	componentWillReceiveProps() {
-		this.setState({
-			response: this.props.user
-		});
 	}
 
 	handleChange(event) {
@@ -28,29 +57,29 @@ export class Form extends Component {
 
 	render() {
 		const inputsArr = this.props.user.inputs;
-		// console.log(inputsArr)
 
 		return (
-			<div>
-				<h2>{this.props.user.header}</h2>
-				<form onSubmit={this.handleSubmit}>
+			<ContentWrapper>
+				<FormHeader>{this.props.user.header}</FormHeader>
+				<FormWrapper onSubmit={this.handleSubmit}>
 					{inputsArr.map((value, index) => {
 						return (
-							<label key={index}>
-								{value.label}
+							<div>
+								<label>{value.label}:</label>
 								<input
+									key={index}
 									name={value.name}
 									type={value.type}
 									value={this.state.value}
 									onChange={this.handleChange}
 									required={value.required}
 								/>
-							</label>
+							</div>
 						);
 					})}
-					<input type="submit" value={this.props.user.submit} />
-				</form>
-			</div>
+					<Submit type="submit" value={this.props.user.submit} />
+				</FormWrapper>
+			</ContentWrapper>
 		);
 	}
 }

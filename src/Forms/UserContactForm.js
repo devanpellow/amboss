@@ -12,7 +12,7 @@ export class UserContactForm extends Component {
 				{ label: "Area Code", name: "areaCode", type: "number", required: false },
 				{ label: "Phone Number", name: "phoneNumber", type: "number", required: true }
 			],
-			submit: "Submit User Contact Form"
+			submit: "Submit User Contact Form 🔥"
 		};
 	}
 
