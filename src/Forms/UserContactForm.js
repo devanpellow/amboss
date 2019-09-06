@@ -1,9 +1,28 @@
-// code related to a specific form goes here, using the imported generic Form component
-// see the SINGLE IMPLEMENTATION section for details
-import React from 'react'
-import Form from '../Components/Form'
+import React, { Component } from "react";
+import Form from "../Components/Form";
 
-const UserContactForm = () => <Form />
+export class UserContactForm extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			header: "User Contact Form",
+			inputs: [
+				{ label: "First Name", name: "firstName", type: "text", required: true },
+				{ label: "Last Name", name: "lastName", type: "text", required: false },
+				{ label: "Area Code", name: "areaCode", type: "number", required: false },
+				{ label: "Phone Number", name: "phoneNumber", type: "number", required: true }
+			],
+			submit: "Submit User Contact Form"
+		};
+	}
 
+	render() {
+		return (
+			<div>
+				<Form user={this.state} />
+			</div>
+		);
+	}
+}
 
-export default UserContactForm
+export default UserContactForm;

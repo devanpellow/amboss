@@ -18,7 +18,7 @@ const FormHeader = styled.h1`
 const App = () => (
   <React.Fragment>
       <Global styles={globalStyles} />
-      <FormHeader>Update Your Details</FormHeader>
+      <FormHeader>Custom Form</FormHeader>
       <UserContactForm />
   </React.Fragment>
 )
